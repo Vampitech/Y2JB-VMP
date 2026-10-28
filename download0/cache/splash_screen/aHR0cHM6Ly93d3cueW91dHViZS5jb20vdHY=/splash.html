@@ -8,22 +8,125 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Y2JB</title>
+    <title>Y2JB-VMP</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
         body {
-            font-family: monospace;
-            background: #000;
-            color: #fff;
+            width: 100%;
+            height: 100%;
             margin: 0;
-            padding: 0;
             overflow: hidden;
         }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(circle at 18% 22%, rgba(56, 189, 248, 0.16), transparent 42%),
+                radial-gradient(circle at 82% 78%, rgba(30, 64, 175, 0.22), transparent 46%),
+                linear-gradient(145deg, #050b16 0%, #0a1a2f 52%, #071120 100%);
+            color: #dce9f7;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        #vmp-shell {
+            width: 1180px;
+            padding: 52px 64px;
+            border: 1px solid rgba(125, 211, 252, 0.16);
+            border-radius: 24px;
+            background: rgba(8, 18, 32, 0.72);
+            box-shadow:
+                0 24px 70px rgba(2, 8, 20, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        #vmp-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 34px;
+        }
+
+        #vmp-title {
+            font-size: 46px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #e8f4ff;
+        }
+
+        #vmp-title span {
+            color: #38bdf8;
+        }
+
+        #vmp-subtitle {
+            font-size: 20px;
+            color: rgba(148, 187, 220, 0.72);
+            letter-spacing: 1px;
+        }
+
+        #vmp-status {
+            min-height: 34px;
+            margin-bottom: 22px;
+            font-size: 25px;
+            color: #9ec9e8;
+        }
+
+        #vmp-bar {
+            width: 100%;
+            height: 7px;
+            margin-bottom: 34px;
+            border-radius: 99px;
+            background: rgba(125, 211, 252, 0.12);
+            overflow: hidden;
+        }
+
+        #vmp-fill {
+            width: 8%;
+            height: 100%;
+            border-radius: 99px;
+            background: linear-gradient(90deg, #0ea5e9, #38bdf8 55%, #7dd3fc);
+            transition: width 0.35s ease;
+        }
+
+        #output {
+            max-height: 250px;
+            overflow: hidden;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 19px;
+            line-height: 1.45;
+            color: rgba(190, 216, 238, 0.78);
+        }
+
         #output div {
             white-space: pre;
+        }
+
+        #output div:first-child {
+            color: #7dd3fc;
         }
     </style>
 </head>
 <body>
+    <main id="vmp-shell">
+        <header id="vmp-header">
+            <div id="vmp-title">Y2JB<span>-VMP</span></div>
+            <div id="vmp-subtitle">PLAYSTATION 5</div>
+        </header>
+
+        <div id="vmp-status">Inicializando entorno…</div>
+
+        <div id="vmp-bar">
+            <div id="vmp-fill"></div>
+        </div>
+
+        <div id="output"></div>
+    </main>
+
     <script src="main.js"></script>
     <script src="payload-manager.js"></script>
 </body>
